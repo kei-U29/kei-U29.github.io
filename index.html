@@ -1,11 +1,129 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>My Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>kei maro | Neon Gallery</title>
+  <meta name="description" content="kei maro の趣味ギャラリー（VRChat / Games）" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <h1>こんにちは！</h1>
-  <p>これが私の初めてのGitHubサイトです。</p>
+  <!-- neon background -->
+  <canvas id="bg"></canvas>
+
+  <header class="header" id="header">
+    <a class="brand" href="#top">kei maro</a>
+
+    <button class="menuBtn" id="menuBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav">
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#links">Links</a>
+      <button class="themeBtn" id="themeBtn" type="button" aria-label="テーマ切り替え">🟣</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero reveal">
+      <div class="heroCard">
+        <div class="heroLeft">
+          <h1 class="title">
+            <span class="neon">kei maro</span>
+          </h1>
+          <p class="lead">VRChat / Games / Screenshots</p>
+
+          <div class="chips">
+            <span class="chip">Neon</span>
+            <span class="chip">VRChat</span>
+            <span class="chip">Gaming</span>
+          </div>
+
+          <div class="cta">
+            <a class="btn primary" href="#gallery">ギャラリーを見る</a>
+            <a class="btn" href="#links">リンク</a>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <!-- ここに “その子の雰囲気に合う” アイコンを置く -->
+          <!-- assets/avatar.png をアップしたら表示される -->
+          <div class="avatarWrap">
+            <img class="avatar" src="assets/avatar.png" alt="kei maro avatar" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('noimg');" />
+            <div class="avatarFallback">
+              <div class="ring"></div>
+              <div class="ring r2"></div>
+              <div class="ring r3"></div>
+              <div class="fallbackText">kei maro</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section reveal">
+      <h2>About</h2>
+      <div class="card">
+        <p class="muted">
+          ここに自己紹介を書く（好きなゲーム / VRChatでの活動 / 撮影スタイルなど）。
+        </p>
+        <ul class="meta">
+          <li><b>好き:</b> VRChat / 写真 / ゲーム</li>
+          <li><b>雰囲気:</b> ネオン / かわいい / ちょい幻想</li>
+          <li><b>一言:</b> 撮ったやつをたくさん載せていく！</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="gallery" class="section reveal">
+      <div class="row">
+        <h2>Gallery</h2>
+        <div class="rowRight">
+          <input id="search" class="search" placeholder="検索（タイトル/タグ）…" />
+          <select id="filter" class="select">
+            <option value="all">全部</option>
+            <option value="vrchat">VRChat</option>
+            <option value="game">Game</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="muted">
+        画像をクリックで拡大。たくさん載せてもOK（lazy-load対応）。
+      </p>
+
+      <div id="galleryGrid" class="masonry"></div>
+    </section>
+
+    <section id="links" class="section reveal">
+      <h2>Links</h2>
+      <div class="card links">
+        <a href="#" target="_blank" rel="noreferrer">X / Twitter</a>
+        <a href="#" target="_blank" rel="noreferrer">VRChat</a>
+        <a href="#" target="_blank" rel="noreferrer">YouTube / Twitch</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>© <span id="year"></span> kei maro</small>
+    </footer>
+  </main>
+
+  <!-- lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lbClose" id="lbClose" aria-label="閉じる">×</button>
+    <img id="lbImg" alt="expanded" />
+    <div class="lbMeta">
+      <div id="lbTitle" class="lbTitle"></div>
+      <div id="lbTags" class="lbTags"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
