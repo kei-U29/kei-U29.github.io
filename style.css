@@ -375,17 +375,22 @@ main{ width:min(1080px, 92vw); margin: 0 auto; }
   .nav.open{ opacity:1; transform: translateY(0); pointer-events:auto; }
 }
 
+.heroFull{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .heroBanner{
-  position: relative;
-  height: min(56vh, 520px);
+  width: 100vw;
+  height: 85vh;   /* ← 縦長にする */
+  max-height: none;
 
-  /* 枠っぽさを消す */
   border: none;
-  box-shadow: none;
   border-radius: 0;
-  margin-bottom: 0;
+  box-shadow: none;
 
-  overflow: hidden; /* 画像のはみ出し防止は維持 */
+  margin: 0;
 }
 
 .heroImg{
